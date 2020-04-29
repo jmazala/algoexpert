@@ -15,6 +15,7 @@ class Program {
     dp[0] = 1; // only 1 way to make 0
     Arrays.sort(denoms);
 
+    //use all of 1 coin, then all of another coin
     for (int coin : denoms) {
       for (int i = 1; i <= n; i++) {
         if (coin > n) {
@@ -34,7 +35,7 @@ class Program {
   }
 
   public static void main(String[] args) {
-    System.out.println(Program.numberOfWaysToMakeChange(6, new int[] { 1, 5 })); // 2
+    // System.out.println(Program.numberOfWaysToMakeChange(6, new int[] { 1, 5 })); // 2
     /*
     1 - 16 pennies
     2 - 11 pennies 1 nickel
@@ -43,7 +44,7 @@ class Program {
     5 - 1 penny 3 nickels
     6 - 1 penny 1 nickel 1 dime
     */
-    System.out.println(Program.numberOfWaysToMakeChange(16, new int[] { 1, 5, 10, 25 })); // 6
+    // System.out.println(Program.numberOfWaysToMakeChange(16, new int[] { 1, 5, 10, 25 })); // 6
     System.out.println(Program.numberOfWaysToMakeChange(10, new int[] { 1, 5, 10, 25 })); // 4
   }
 }
