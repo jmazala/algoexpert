@@ -3,7 +3,7 @@ function hasSingleCycle(array) {
   let index = 0;
   let numVisited = 0;
 
-  while(numVisited < array.length) {
+  while (numVisited < array.length) {
     if (numVisited > 0 && index === 0) {
       return false;
     }
@@ -14,7 +14,7 @@ function hasSingleCycle(array) {
       index = array.length + index;
     }
   }
-  
+
   return index === 0;
 }
 
