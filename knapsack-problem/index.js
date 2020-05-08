@@ -20,15 +20,12 @@ function knapsackProblem(items, capacity) {
     }
   }
 
-  //how to get the items though?
-
-
   return [matrix[items.length][capacity], getItemsUsed(matrix, items)];
 }
 
 function getItemsUsed(matrix, items) {
   const itemsUsed = [];
-  
+
   //start in the bottom right corner
   let i = matrix.length - 1;
   let j = matrix[0].length - 1;
