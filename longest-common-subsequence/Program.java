@@ -20,7 +20,7 @@ class Program {
       }
     }
 
-    List<Character> answer = new ArrayList<>();
+    List<Character> answer = new ArrayList<>(matrix[str1.length()][str2.length()].length());
     for (char c : matrix[str1.length()][str2.length()].toCharArray()) {
       answer.add(c);
     }
