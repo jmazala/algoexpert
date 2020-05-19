@@ -3,6 +3,7 @@ import java.util.*;
 class Program {
   // O(n) time O(1) space
   public static LinkedList findLoop(LinkedList head) {
+    //if we start them both at head our while loop won't work
     LinkedList slow = head.next;
     LinkedList fast = head.next.next;
 
