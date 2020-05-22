@@ -18,22 +18,22 @@ class Program {
 
   private static int partition(int[] array, int low, int high) {
     final int pivot = array[high];
-    int i = low - 1;
+    int i = low;
 
     for (int j = low; j < high; j++) {
       if (array[j] < pivot) {
+        swap(array, i, j);
         i++;
-
-        int temp = array[j];
-        array[j] = array[i];
-        array[i] = temp;
       }
     }
 
-    i++;
-    int temp = array[i];
-    array[i] = array[high];
-    array[high] = temp;
+    swap(array, i, high);
     return i;
+  }
+
+  private static void swap(int[] array, int i, int j) {
+    int temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
 }

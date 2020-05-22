@@ -14,21 +14,23 @@ function quickSort(array) {
 
   function partition(low, high) {
     const pivot = array[high];
-    let i = low - 1; //index of smaller element
+    let i = low;
     for (let j = low; j < high; j++) {
       if (array[j] < pivot) {
+        swap(array, i, j);
         i++;
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
       }
     }
 
-    const temp = array[i + 1];
-    array[i + 1] = array[high];
-    array[high] = temp;
-    return i + 1;
+    swap(array, i, high);
+    return i;
   }
+}
+
+function swap(array, i, j) {
+  const temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
 }
 
 // Do not edit the line below.
