@@ -1,8 +1,9 @@
+#LOOP WITHOUT HELPER FUNCTION
 def quickselect(array, k):
-  return helper(array, k-1, 0, len(array) - 1)
-
-#LOOP
-def helper(array, position, low, high):
+  low = 0
+  high = len(array) - 1
+  position = k - 1
+  
   while True:
     pivot = low
     left = pivot + 1
