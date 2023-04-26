@@ -1,4 +1,4 @@
-class Program {
+class CaesarCipherEncryptor {
   public static String caesarCypherEncryptor(String str, int key) {
     char[] result = new char[str.length()];
     key = key % 26;

@@ -2,7 +2,7 @@
 //https://www.algoexpert.io/questions/BST%20Traversal
 import java.util.*;
 
-class Program {
+class BSTTraversal {
 
   // left, node, right
   public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {
@@ -59,8 +59,8 @@ class Program {
     tree.right = new BST(15);
     tree.right.right = new BST(22);
 
-    System.out.println(Program.inOrderTraverse(tree, new LinkedList<>())); // [1, 2, 5, 5, 10, 15, 22]
-    System.out.println(Program.preOrderTraverse(tree, new LinkedList<>())); // [10, 5, 2, 1, 5, 15, 22]
-    System.out.println(Program.postOrderTraverse(tree, new LinkedList<>())); // [1, 2, 5, 5, 22, 15, 10]
+    System.out.println(BSTTraversal.inOrderTraverse(tree, new LinkedList<>())); // [1, 2, 5, 5, 10, 15, 22]
+    System.out.println(BSTTraversal.preOrderTraverse(tree, new LinkedList<>())); // [10, 5, 2, 1, 5, 15, 22]
+    System.out.println(BSTTraversal.postOrderTraverse(tree, new LinkedList<>())); // [1, 2, 5, 5, 22, 15, 10]
   }
 }

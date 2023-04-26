@@ -1,4 +1,4 @@
-class Program {
+class BubbleSort {
   public static int[] bubbleSort(int[] array) {
     boolean keepGoing = true;
     int iterations = 0;
