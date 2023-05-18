@@ -2,7 +2,7 @@
 //https://www.algoexpert.io/questions/stable-internships
 import java.util.*;
 
-class Program {
+class StableInternships {
   public int[][] stableInternships(int[][] interns, int[][] teams) {
     HashMap<Integer, Integer> matches = new HashMap<>();
     // have interns choose their teams
