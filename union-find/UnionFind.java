@@ -7,17 +7,23 @@ import java.util.*;
 class UnionFind {
   // Write your code here.
   private HashMap<Integer, Integer> valuesToParent = new HashMap<>();
-  private HashMap<Integer, Set<Integer>> parentsToValues = new HashMap<>();
 
   public void createSet(int value) {
     this.valuesToParent.put(value, value);
-    Set<Integer> values = new HashSet<>();
-    values.add(value);
-    this.parentsToValues.put(value, values);
   }
 
   public Integer find(int value) {
-    return this.valuesToParent.get(value);
+    if (!this.valuesToParent.containsKey(value)) {
+      return null;
+    }
+
+    int parent = this.valuesToParent.get(value);
+
+    while (parent != this.valuesToParent.get(parent)) {
+      parent = this.valuesToParent.get(parent);
+    }
+
+    return parent;
   }
 
   public void union(int valueOne, int valueTwo) {
@@ -32,13 +38,7 @@ class UnionFind {
       return;
     }
 
-    Set<Integer> valuesToMove = this.parentsToValues.get(oldParent);
-    for (int valueToMove : valuesToMove) {
-      this.valuesToParent.put(valueToMove, newParent);
-      this.parentsToValues.get(newParent).add(valueToMove);
-    }
-
-    this.parentsToValues.remove(oldParent);
+    this.valuesToParent.put(oldParent, newParent);
   }
 
   public static void main(String[] args) {
