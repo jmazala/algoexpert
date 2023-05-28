@@ -18,7 +18,7 @@ function threeNumberSum(array, targetSum) {
     //left and right window
     while (left < right) {
       if (array[i] + array[left] > targetSum) {
-        break;;
+        break;
       }
 
       const sum = array[i] + array[left] + array[right];
