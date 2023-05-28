@@ -1,4 +1,4 @@
-//https://www.algoexpert.io/questions/Three%20Number%20Sum
+// https://www.algoexpert.io/questions/three-number-sum
 
 function threeNumberSum(array, targetSum) {
   if (array.length < 3) {
