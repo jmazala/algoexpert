@@ -12,6 +12,7 @@ public class RiverSizes {
   final static int[] DOWN = new int[] { 1, 0 };
   final static int[][] DIRECTIONS = new int[][] { LEFT, RIGHT, UP, DOWN };
 
+  // USING BFS
   static class QueueItem {
     int i;
     int j;
@@ -77,6 +78,49 @@ public class RiverSizes {
     output.add(size);
   }
 
+  // USING DFS
+  public static List<Integer> riverSizesDFS(int[][] matrix) {
+    List<Integer> output = new ArrayList<>();
+    int m = matrix.length;
+    int n = matrix[0].length;
+
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        int size = dfs(i, j, m, n, matrix);
+        if (size > 0) {
+          output.add(size);
+        }
+      }
+    }
+
+    return output;
+  }
+
+  private static int dfs(int i, int j, int m, int n, int[][] matrix) {
+    if (matrix[i][j] != WATER) {
+      return 0;
+    }
+
+    matrix[i][j] = VISITED;
+    int size = 1;
+
+    for (int[] next : DIRECTIONS) {
+      int nextI = i + next[0];
+      if (nextI == m || nextI < 0) {
+        continue;
+      }
+
+      int nextJ = j + next[1];
+      if (nextJ == n || nextJ < 0) {
+        continue;
+      }
+
+      size += dfs(nextI, nextJ, m, n, matrix);
+    }
+
+    return size;
+  }
+
   public static void main(String[] args) {
     int[][] matrix = new int[][] {
         { 1, 0, 0, 1, 0 },
@@ -86,6 +130,9 @@ public class RiverSizes {
         { 1, 0, 1, 1, 0 }
     };
 
-    System.out.println(riverSizes(matrix).toString()); // {2, 1, 5, 2, 2}
+    // #COPY2DARRAY #COPYMATRIX #JAVA
+    // {2, 1, 5, 2, 2}
+    System.out.println(riverSizes(Arrays.stream(matrix).map(int[]::clone).toArray(int[][]::new)).toString());
+    System.out.println(riverSizesDFS(Arrays.stream(matrix).map(int[]::clone).toArray(int[][]::new)).toString());
   }
 }
