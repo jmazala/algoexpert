@@ -1,17 +1,17 @@
+// https://www.algoexpert.io/questions/min-number-of-coins-for-change 
+
 function minNumberOfCoinsForChange(n, denoms) {
-  //looking for min number or something so populate with largest number
   const dp = Array(n + 1).fill(Infinity);
   dp[0] = 0;
 
+  // why bother with coins too big?
+  denoms = denoms.filter(coin => coin <= n);
+
   denoms.sort((a, b) => a - b);
   for (let i = 1; i <= n; i++) {
-    for (let coin of denoms) {
-      //coins are sorted so this optimizes a bit
-      if (coin > i) {
-        break;
-      }
-
+    for (let coin of denoms.filter(coin => coin <= i)) {
       const missing = i - coin;
+
       //we're going to cross the same point a max of len(denoms) times
       dp[i] = Math.min(dp[i], dp[missing] + 1);
     }
