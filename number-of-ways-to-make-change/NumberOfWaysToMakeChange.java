@@ -19,15 +19,11 @@ class NumberOfWaysToMakeChange {
 
     // use all of 1 coin, then all of another coin
     for (int coin : denoms) {
-      for (int i = 1; i <= n; i++) {
-        if (coin > n) {
-          break;
-        }
+      if (coin > n) {
+        break;
+      }
 
-        if (coin > i) {
-          continue;
-        }
-
+      for (int i = coin; i <= n; i++) {
         int missing = i - coin;
         dp[i] += dp[missing];
       }
