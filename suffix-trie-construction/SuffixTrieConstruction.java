@@ -1,6 +1,8 @@
+// https://www.algoexpert.io/questions/suffix-trie-construction
+
 import java.util.*;
 
-class Program {
+class SuffixTrieConstruction {
   // Do not edit the class below except for the
   // populateSuffixTrieFrom and contains methods.
   // Feel free to add new properties and methods
