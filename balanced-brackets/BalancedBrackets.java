@@ -22,11 +22,7 @@ class BalancedBrackets {
         case ')':
         case '}':
         case ']':
-          if (stack.isEmpty()) {
-            return false;
-          }
-
-          if (stack.pop() != MATCHING.get(c)) {
+          if (stack.isEmpty() || stack.pop() != MATCHING.get(c)) {
             return false;
           }
 
