@@ -33,8 +33,7 @@ class NumberOfWaysToMakeChange {
   }
 
   public static void main(String[] args) {
-    // System.out.println(numberOfWaysToMakeChange(6, new int[] { 1, 5 }));
-    // // 2
+    System.out.println(numberOfWaysToMakeChange(6, new int[] { 1, 5 })); // 2
     /*
      * 1 - 16 pennies
      * 2 - 11 pennies 1 nickel
@@ -43,8 +42,7 @@ class NumberOfWaysToMakeChange {
      * 5 - 1 penny 3 nickels
      * 6 - 1 penny 1 nickel 1 dime
      */
-    // System.out.println(numberOfWaysToMakeChange(16, new int[] { 1, 5, 10,
-    // 25 })); // 6
+    System.out.println(numberOfWaysToMakeChange(16, new int[] { 1, 5, 10, 25 })); // 6
     System.out.println(numberOfWaysToMakeChange(10, new int[] { 1, 5, 10, 25 })); // 4
   }
 }
