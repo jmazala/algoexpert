@@ -1,5 +1,5 @@
 // Feel free to add new properties and methods to the class.
-class Program {
+class LinkedListConstruction {
   static class DoublyLinkedList {
     public Node head;
     public Node tail;
