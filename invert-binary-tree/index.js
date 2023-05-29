@@ -1,4 +1,4 @@
-//https://www.algoexpert.io/questions/Invert%20Binary%20Tree
+// https://www.algoexpert.io/questions/Invert%20Binary%20Tree
 
 function invertBinaryTree(tree) {
   if (!tree) {

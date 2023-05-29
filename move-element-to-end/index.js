@@ -1,4 +1,4 @@
-//https://www.algoexpert.io/questions/Move%20Element%20To%20End
+// https://www.algoexpert.io/questions/move-element-to-end
 
 function moveElementToEnd(array, toMove) {
   let beginning = 0;

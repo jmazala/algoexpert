@@ -1,3 +1,5 @@
+// https://www.algoexpert.io/questions/min-height-bst
+
 function minHeightBst(array) {
   return helper(array, 0, array.length - 1);
 }
