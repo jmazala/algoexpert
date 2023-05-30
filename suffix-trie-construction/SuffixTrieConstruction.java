@@ -52,5 +52,9 @@ class SuffixTrieConstruction {
 
       return temp.children.containsKey(endSymbol);
     }
+
+    public static void main(String[] args) {
+      new SuffixTrie("treehouse");
+    }
   }
 }

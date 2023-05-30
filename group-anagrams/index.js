@@ -1,3 +1,5 @@
+// https://www.algoexpert.io/questions/group-anagrams
+
 function groupAnagrams(words) {
   const hash = {};
   for (word of words) {
