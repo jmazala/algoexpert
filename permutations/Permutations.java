@@ -48,9 +48,9 @@ class Permutations {
     for (int i = 0; i < remaining.size(); i++) {
       List<Integer> next = new ArrayList<Integer>(taken);
       next.add(remaining.get(i));
-      List<Integer> remainingAfterRemoval = new ArrayList<>(remaining);
-      remainingAfterRemoval.remove(i);
-      permutations(remainingAfterRemoval, next, answer);
+      int toRemove = remaining.remove(i);
+      permutations(remaining, next, answer);
+      remaining.add(i, toRemove);
     }
   }
 
