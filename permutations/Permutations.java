@@ -43,16 +43,16 @@ class Permutations {
 
   private static void permutations(List<Integer> remaining, List<Integer> taken, List<List<Integer>> answer) {
     if (remaining.isEmpty()) {
-      answer.add(taken);
+      answer.add(new ArrayList<>(taken));
       return;
     }
 
     for (int i = 0; i < remaining.size(); i++) {
-      List<Integer> next = new ArrayList<Integer>(taken);
       int toRemove = remaining.remove(i);
-      next.add(toRemove);
-      permutations(remaining, next, answer);
+      taken.add(toRemove);
+      permutations(remaining, taken, answer);
       remaining.add(i, toRemove);
+      taken.remove(taken.size() - 1);
     }
   }
 
