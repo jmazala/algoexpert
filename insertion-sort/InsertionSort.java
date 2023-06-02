@@ -1,4 +1,4 @@
-class Program {
+class InsertionSort {
   public static int[] insertionSort(int[] array) {
     for (int i = 1; i < array.length; i++) {
       int j = i;

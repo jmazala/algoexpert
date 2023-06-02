@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class NodeDepths {
 
   public static int nodeDepths(BinaryTree root) {
     return helper(root, 0);

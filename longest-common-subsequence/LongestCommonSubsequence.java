@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class LongestCommonSubsequence {
   public static List<Character> longestCommonSubsequence(String str1, String str2) {
     // 2d matrix
     String[][] matrix = new String[str1.length() + 1][str2.length() + 1];

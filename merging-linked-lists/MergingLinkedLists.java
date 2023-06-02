@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-class Program {
+class MergingLinkedLists {
   // This is an input class. Do not edit.
   public static class LinkedList {
     public int value;

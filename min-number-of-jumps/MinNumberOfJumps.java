@@ -1,4 +1,4 @@
-class Program {
+class MinNumberOfJumps {
 
   // O(n) time, O(1) space
   public static int minNumberOfJumps(int[] array) {
@@ -47,6 +47,6 @@ class Program {
   // }
 
   public static void main(String[] args) {
-    System.out.println(Program.minNumberOfJumps(new int[] { 3, 4, 2, 1, 2, 3, 7, 1, 1, 1, 3 })); // 4
+    System.out.println(minNumberOfJumps(new int[] { 3, 4, 2, 1, 2, 3, 7, 1, 1, 1, 3 })); // 4
   }
 }

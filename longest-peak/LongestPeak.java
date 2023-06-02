@@ -1,4 +1,4 @@
-class Program {
+class LongestPeak {
   public static int longestPeak(int[] array) {
     int answer = 0;
     int i = 1;
@@ -30,6 +30,6 @@ class Program {
   }
 
   public static void main(String[] args) {
-    System.out.println(Program.longestPeak(new int[] { 1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3 })); // 6
+    System.out.println(longestPeak(new int[] { 1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3 })); // 6
   }
 }

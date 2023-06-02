@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class ValidSubsequence {
   public static boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
     int iSequence = 0;
     int iArray = 0;
@@ -33,12 +33,12 @@ class Program {
     sequence.add(-1);
     sequence.add(10);
 
-    System.out.println(Program.isValidSubsequence(array, sequence));
+    System.out.println(isValidSubsequence(array, sequence));
 
     List<Integer> sequence2 = new ArrayList<>(3);
     sequence2.add(22);
     sequence2.add(25);
     sequence2.add(6);
-    System.out.println(Program.isValidSubsequence(array, sequence2));
+    System.out.println(isValidSubsequence(array, sequence2));
   }
 }

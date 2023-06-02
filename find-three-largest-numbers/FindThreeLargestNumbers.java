@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class FindThreeLargestNumbers {
   public static int[] findThreeLargestNumbers(int[] array) {
     PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> a - b);
 

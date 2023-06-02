@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class TwoNumberSum {
 
   // O(n) time / O(n) space
   public static int[] twoNumberSum(int[] array, int targetSum) {
@@ -18,23 +18,23 @@ class Program {
 
   // O(n log n) time / O(1) space
   // public static int[] twoNumberSum(int[] array, int targetSum) {
-  //   Arrays.sort(array);
-  //   int left = 0;
-  //   int right = array.length - 1;
+  // Arrays.sort(array);
+  // int left = 0;
+  // int right = array.length - 1;
 
-  //   while (left < right) {
-  //     int currentSum = array[left] + array[right];
-  //     if (currentSum == targetSum) {
-  //       return new int[] { array[left], array[right] };
-  //     }
+  // while (left < right) {
+  // int currentSum = array[left] + array[right];
+  // if (currentSum == targetSum) {
+  // return new int[] { array[left], array[right] };
+  // }
 
-  //     if (currentSum < targetSum) {
-  //       left++;
-  //     } else {
-  //       right--;
-  //     }
-  //   }
+  // if (currentSum < targetSum) {
+  // left++;
+  // } else {
+  // right--;
+  // }
+  // }
 
-  //   return new int[] {};
+  // return new int[] {};
   // }
 }

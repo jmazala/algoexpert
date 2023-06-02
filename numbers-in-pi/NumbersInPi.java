@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class NumbersInPi {
   private static int answer;
   private static Set<String> set;
 
@@ -37,9 +37,9 @@ class Program {
 
   public static void main(String[] args) {
     String pi = "3141592653589793238462643383279";
-    System.out.println(Program.numbersInPi(pi,
+    System.out.println(numbersInPi(pi,
         new String[] { "314159265358979323846", "26433", "8", "3279", "314159265", "35897932384626433832", "79" }));
-    System.out.println(Program.numbersInPi(pi,
-        new String[] { "3", "1", "4", "592", "65", "35", "8", "9793", "2384626", "55", "83279" })); //13
+    System.out.println(numbersInPi(pi,
+        new String[] { "3", "1", "4", "592", "65", "35", "8", "9793", "2384626", "55", "83279" })); // 13
   }
 }

@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-class Program {
+class NumberOfWaysToTraverseGraph {
 
   public int numberOfWaysToTraverseGraph(int width, int height) {
     int[][] dp = new int[height][width];

@@ -1,4 +1,4 @@
-class Program {
+class SubarraySort {
   public static int[] subarraySort(int[] array) {
     if (array.length < 2) {
       return new int[] { -1, -1 };

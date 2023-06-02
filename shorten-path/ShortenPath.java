@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-class Program {
+class ShortenPath {
   public static String shortenPath(String path) {
     String[] tokens = path.split("/");
     List<String> filteredTokens = Arrays.asList(tokens).stream().filter((a) -> a.length() > 0 && !a.equals("."))
@@ -46,6 +46,6 @@ class Program {
   }
 
   public static void main(String[] args) {
-    System.out.println(Program.shortenPath("/foo/../test/../test/../foo//bar/./baz"));
+    System.out.println(shortenPath("/foo/../test/../test/../foo//bar/./baz"));
   }
 }

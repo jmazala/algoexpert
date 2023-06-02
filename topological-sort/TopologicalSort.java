@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class TopologicalSort {
   public static List<Integer> topologicalSort(List<Integer> jobs, List<Integer[]> deps) {
     Map<Integer, Integer> degrees = new HashMap<>();
     Map<Integer, List<Integer>> prereqs = new HashMap<>();
@@ -52,6 +52,6 @@ class Program {
     deps.add(new Integer[] { 3, 2 });
     deps.add(new Integer[] { 4, 2 });
     deps.add(new Integer[] { 4, 3 });
-    System.out.println(Program.topologicalSort(jobs, deps));
+    System.out.println(topologicalSort(jobs, deps));
   }
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Program {
+class QuickSort {
   public static int[] quickSort(int[] array) {
     helper(array, 0, array.length - 1);
     return array;

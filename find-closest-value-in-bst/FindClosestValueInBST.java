@@ -1,7 +1,7 @@
-class Program {
+class FindClosestValueInBST {
   public static int findClosestValueInBst(BST tree, int target) {
-		double answer = Double.MAX_VALUE;
-    
+    double answer = Double.MAX_VALUE;
+
     while (tree != null) {
       int difference = Math.abs(target - tree.value);
       if (difference == 0) {
@@ -17,8 +17,8 @@ class Program {
       } else {
         tree = tree.left;
       }
-		}
-    
+    }
+
     return (int) answer;
   }
 
