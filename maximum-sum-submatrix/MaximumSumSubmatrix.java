@@ -3,9 +3,13 @@
 import java.util.*;
 
 class MaximimSumSubmatrix {
+
   /*
    * Problem statement says size is a positive integer,
-   * and m >= size and n >= size
+   * and m >= size and n >= size.
+   * 
+   * TIME: O(m*n*s) for 3 loops
+   * SPACE: O(m*n*s) for dp array
    */
   public static int maximumSumSubmatrix(int[][] matrix, int size) {
     int m = matrix.length;
@@ -13,17 +17,11 @@ class MaximimSumSubmatrix {
 
     // dp matrix starting from top left position i,j of size s
     int[][][] dp = new int[m][n][size + 1];
-    dp[0][0][1] = matrix[0][0];
-    int answer = dp[0][0][1];
+    int answer = Integer.MIN_VALUE;
 
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
         for (int s = 1; s <= size; s++) {
-          // preloaded this
-          if (i == 0 && j == 0 & s == 1) {
-            continue;
-          }
-
           if ((i + s) > m || (j + s) > n) {
             continue;
           }
@@ -39,7 +37,10 @@ class MaximimSumSubmatrix {
           }
 
           dp[i][j][s] = sum;
-          answer = Math.max(sum, answer);
+
+          if (s == size) {
+            answer = Math.max(sum, answer);
+          }
         }
       }
     }
@@ -65,5 +66,13 @@ class MaximimSumSubmatrix {
     };
 
     System.out.println(maximumSumSubmatrix(matrix2, 2)); // 17
+
+    int[][] matrix3 = {
+        { -1, -2, -3, -4, -5 },
+        { -5, -4, -3, -2, -1 },
+        { -1, -2, -3, -4, -5 }
+    };
+
+    System.out.println(maximumSumSubmatrix(matrix3, 2)); // -12
   }
 }
