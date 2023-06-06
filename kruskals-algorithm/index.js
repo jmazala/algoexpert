@@ -100,3 +100,20 @@ console.log(JSON.stringify(kruskalsAlgorithm([
   [[0, 5], [1, 10]],
   [[1, 12]]
 ])));
+
+console.log(JSON.stringify(kruskalsAlgorithm([
+  [[1, 5], [2, 10]],
+  [[0, 5], [2, 6]],
+  [[0, 10], [1, 6]]
+]
+))); /* [
+  [[1,5]],
+  [[0,5],[2,6]],
+  [[1,6]]]
+
+  0 => 1 with weight 5
+  0 => 2 with weight 10 = total weight 15
+
+  0 => 1 with weight 5
+  0 => 2 with weight 6 = total weight 11
+  */
