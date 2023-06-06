@@ -29,14 +29,6 @@ class LargestRectangleUnderSkyline {
       return buildings.get(0);
     }
 
-    /*
-     * no building has height lower than 1 according to problem statement
-     * so a little shortcut we can take is assume a rectangle of every building
-     * with size 1.
-     * 
-     * Of course, the min height might actually be higher than 1,
-     * that will be accounted for at the end
-     */
     int largest = Integer.MIN_VALUE;
     Stack<StackItem> stack = new Stack<>();
 
@@ -46,6 +38,23 @@ class LargestRectangleUnderSkyline {
     for (int i = 0; i < buildings.size(); i++) {
       int buildingHeight = buildings.get(i);
 
+      /*
+       * We use stack.peek() (or 0 if empty) to determine the left bound
+       * of a building when its popped from the stack.
+       * That's why we use >= in the conditional below.
+       * Because, if we have 2 buildings side by side with the same height,
+       * the leftbound will be preserved on the stack.
+       * That way, when we push the current building (i.e.
+       * "right side of the rectangle")
+       * back on, its left bound (which is the same as the left bound of the equal
+       * height building next to it)
+       * Still exists on the stack.
+       * This is true of the example with the two 3's at indexes 1 and 2.
+       * We pop index 1 off the stack even when processing index 2, but the leftbound
+       * (building with height 1 at index 0)
+       * is still there. So when we pop index 2 (height 3) off the stack, we'll
+       * still properly calculate the area.
+       */
       while (!stack.isEmpty() && stack.peek().height >= buildingHeight) {
         StackItem item = stack.pop();
         int width = stack.isEmpty() ? i : i - stack.peek().i - 1;
