@@ -1,9 +1,7 @@
+// https://www.algoexpert.io/questions/subarray-sort
+
 class SubarraySort {
   public static int[] subarraySort(int[] array) {
-    if (array.length < 2) {
-      return new int[] { -1, -1 };
-    }
-
     int unsortedMin = Integer.MAX_VALUE;
     int unsortedMax = Integer.MIN_VALUE;
 

@@ -15,7 +15,7 @@ class KnightConnection {
     }
   }
 
-  public static int knightConnection(int[] knightA, int[] knightB) throws Exception {
+  public static int knightConnection(int[] knightA, int[] knightB) {
     Queue<QueueItem> queue = new LinkedList<>();
     Set<String> visited = new HashSet<>();
     queue.add(new QueueItem(knightA, 0));
@@ -57,7 +57,7 @@ class KnightConnection {
 
     }
 
-    throw new Exception("will never happen");
+    return -1;
   }
 
   private static String getKey(int[] knight) {

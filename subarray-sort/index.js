@@ -1,17 +1,10 @@
+// https://www.algoexpert.io/questions/subarray-sort
+
 function subarraySort(array) {
-  const answer = [-1, -1];
-
-  if (array.length < 2) {
-    return answer;
-  }
-
-  if (array.length === 2) {
-    return array[0] < array[1] ? answer : [0, 1];
-  }
-
   let unsortedMin = Infinity;
   let unsortedMax = -Infinity;
 
+  // Find the max and min values that are out of place in the "sorted" array
   for (let i = 0; i < array.length; i++) {
     if (isUnsorted(i)) {
       unsortedMin = Math.min(unsortedMin, array[i]);
@@ -20,9 +13,10 @@ function subarraySort(array) {
   }
 
   if (unsortedMin === Infinity) {
-    return answer;
+    return [-1, 1];
   }
 
+  // Find where to place the smallest and largest values
   let left = 0;
   while (unsortedMin >= array[left]) {
     left++;
