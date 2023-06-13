@@ -17,29 +17,12 @@ class SameBSTs {
     arrayOne.remove(0);
     arrayTwo.remove(0);
 
-    List<Integer> leftOne = new LinkedList<>();
-    List<Integer> rightOne = new LinkedList<>();
-
-    for (int i : arrayOne) {
-      if (i >= root) {
-        rightOne.add(i);
-      } else {
-        leftOne.add(i);
-      }
-    }
-
-    List<Integer> leftTwo = new LinkedList<>();
-    List<Integer> rightTwo = new LinkedList<>();
-
-    for (int i : arrayTwo) {
-      if (i >= root) {
-        rightTwo.add(i);
-      } else {
-        leftTwo.add(i);
-      }
-    }
-
-    return sameBsts(leftOne, leftTwo) && sameBsts(rightOne, rightTwo);
+    return sameBsts(
+        arrayOne.stream().filter(i -> i < root).toList(),
+        arrayTwo.stream().filter(i -> i < root).toList()) &&
+        sameBsts(
+            arrayOne.stream().filter(i -> i >= root).toList(),
+            arrayTwo.stream().filter(i -> i >= root).toList());
   }
 
   public static void main(String[] args) {
