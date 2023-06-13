@@ -1,4 +1,11 @@
-import java.util.*;
+// https://www.algoexpert.io/questions/topological-sort
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 class TopologicalSort {
   public static List<Integer> topologicalSort(List<Integer> jobs, List<Integer[]> deps) {
