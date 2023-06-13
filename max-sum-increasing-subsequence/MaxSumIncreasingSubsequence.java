@@ -2,32 +2,36 @@
 
 import java.util.*;
 
+/*
+ * TIME:  O(n^2)
+ * SPACE:  O(n).  This one is reduced a bit compared to solution 1 because
+ * we are storing indices instead of entire subsequences.  And build it
+ * at the end
+ */
 public class MaxSumIncreasingSubsequence {
   public static List<List<Integer>> maxSumIncreasingSubsequence(int[] array) {
     int[] dp = new int[array.length];
-    List<List<Integer>> subsequences = new ArrayList<>();
+    Integer[] subsequences = new Integer[array.length];
     int maxIndex = 0;
     int overallMax = array[0];
 
     dp[0] = array[0];
-    subsequences.add(new ArrayList<Integer>(Arrays.asList(new Integer[] { array[0] })));
+    subsequences[0] = null;
 
     for (int i = 1; i < array.length; i++) {
       int curMax = array[i];
-      List<Integer> subsequence = new ArrayList<>(Arrays.asList(new Integer[] { array[i] }));
+      subsequences[i] = null;
 
       for (int j = 0; j < i; j++) {
         if (array[i] > array[j]) {
           if (dp[j] + array[i] > curMax) {
             curMax = dp[j] + array[i];
-            subsequence = new ArrayList<>(subsequences.get(j));
-            subsequence.add(array[i]);
+            subsequences[i] = j;
           }
         }
       }
 
       dp[i] = curMax;
-      subsequences.add(subsequence);
 
       if (curMax > overallMax) {
         overallMax = curMax;
@@ -37,8 +41,19 @@ public class MaxSumIncreasingSubsequence {
 
     List<List<Integer>> output = new ArrayList<>();
     output.add(new ArrayList<>(Arrays.asList(new Integer[] { dp[maxIndex] })));
-    output.add(subsequences.get(maxIndex));
+    output.add(getSubsequences(array, subsequences, maxIndex));
     return output;
+  }
+
+  private static List<Integer> getSubsequences(int[] array, Integer[] subsequences, Integer maxIndex) {
+    List<Integer> subsequence = new ArrayList<>();
+    while (maxIndex != null) {
+      subsequence.add(array[maxIndex]);
+      maxIndex = subsequences[maxIndex];
+    }
+
+    Collections.reverse(subsequence);
+    return subsequence;
   }
 
   public static void main(String[] args) {
