@@ -1,5 +1,3 @@
-import java.util.*;
-
 class FindLoop {
   // O(n) time O(1) space
   public static LinkedList findLoop(LinkedList head) {

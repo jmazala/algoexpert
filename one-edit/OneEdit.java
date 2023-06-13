@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/one-edit
 
-import java.util.*;
-
 class OneEdit {
 
   /*

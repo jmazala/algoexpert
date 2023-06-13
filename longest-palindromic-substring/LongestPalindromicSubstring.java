@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/longest-palindromic-substring
 
-import java.util.*;
-
 public class LongestPalindromicSubstring {
   public static String longestPalindromicSubstring(String str) {
     if (str.length() < 2) {

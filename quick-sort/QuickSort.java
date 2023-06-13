@@ -1,5 +1,3 @@
-import java.util.*;
-
 class QuickSort {
   public static int[] quickSort(int[] array) {
     helper(array, 0, array.length - 1);

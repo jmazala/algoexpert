@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/valid-starting-city
 
-import java.util.*;
-
 class ValidStartingCity {
 
   public static int validStartingCity(int[] distances, int[] fuel, int mpg) {

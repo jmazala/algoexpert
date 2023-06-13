@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/validate-three-nodes
 
-import java.util.*;
-
 class ValidateThreeNodes {
   // This is an input class. Do not edit.
   static class BST {

@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/index-equals-value
 
-import java.util.*;
-
 class IndexEqualsValue {
   /*
    * TIME: O(log n) since we binary search

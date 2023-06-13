@@ -1,6 +1,9 @@
 // https://www.algoexpert.io/questions/max-sum-increasing-subsequence
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /*
  * TIME:  O(n^2)

@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/staircase-traversal
 
-import java.util.*;
-
 class StaircaseTraversal {
 
   public static int staircaseTraversal(int height, int maxSteps) {

@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/majority-element
 
-import java.util.*;
-
 class MajorityElement {
 
   public static int majorityElement(int[] array) {

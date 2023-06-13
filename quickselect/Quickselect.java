@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Quickselect {
   public static int quickselect(int[] array, int k) {
     return helper(array, 0, array.length - 1, k - 1);

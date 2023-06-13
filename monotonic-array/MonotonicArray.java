@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/monotonic-array
 
-import java.util.*;
-
 public class MonotonicArray {
   public static boolean isMonotonic(int[] array) {
     if (array.length < 3) {

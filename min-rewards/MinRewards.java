@@ -1,6 +1,6 @@
 // https://www.algoexpert.io/questions/min-rewards
 
-import java.util.*;
+import java.util.Arrays;
 
 class MinRewards {
   /*

@@ -1,6 +1,11 @@
 // https://www.algoexpert.io/questions/phone-number-mnemonics
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 class PhoneNumberMnemonics {
 
@@ -20,15 +25,22 @@ class PhoneNumberMnemonics {
   }
 
   /*
-   * METHOD 1 - Recursion
+   * METHOD 2 - With a stack
    */
   public static ArrayList<String> phoneNumberMnemonics(String phoneNumber) {
     ArrayList<String> result = new ArrayList<>();
-
-    // int i = 0;
-    // StringBuilder prefix = new StringBuilder();
-    // PhoneNumberMnemonics.fillArray(i, prefix, phoneNumber, result);
     PhoneNumberMnemonics.fillArray2(phoneNumber, result);
+    return result;
+  }
+
+  /*
+   * METHOD 1 - Recursion
+   */
+  public static ArrayList<String> phoneNumberMnemonics2(String phoneNumber) {
+    ArrayList<String> result = new ArrayList<>();
+    int i = 0;
+    StringBuilder prefix = new StringBuilder();
+    PhoneNumberMnemonics.fillArray(i, prefix, phoneNumber, result);
     return result;
   }
 

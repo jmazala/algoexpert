@@ -1,5 +1,3 @@
-import java.util.*;
-
 class MergeLinkedLists {
   // This is an input class. Do not edit.
   public static class LinkedList {

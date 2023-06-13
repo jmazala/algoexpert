@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/levenshtein-distance
 
-import java.util.*;
-
 /*
  * This is a classic algorithm.  Don't think, just memorize it.
  * https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0

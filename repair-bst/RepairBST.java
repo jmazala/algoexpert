@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/repair-bst
 
-import java.util.*;
-
 class RepairBST {
   // This is an input class. Do not edit.
   static class BST {

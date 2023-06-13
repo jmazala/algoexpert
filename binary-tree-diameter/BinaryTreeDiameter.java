@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/binary-tree-diameter
 
-import java.util.*;
-
 class BinaryTreeDiameter {
   // This is an input class. Do not edit.
   static class BinaryTree {

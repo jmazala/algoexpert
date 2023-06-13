@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/reverse-words-in-string
 
-import java.util.*;
-
 class ReverseWordsInString {
 
   public static String reverseWordsInString(String string) {

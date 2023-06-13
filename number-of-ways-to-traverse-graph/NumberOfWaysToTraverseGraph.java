@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/number-of-ways-to-traverse-graph
 
-import java.util.*;
-
 class NumberOfWaysToTraverseGraph {
 
   public int numberOfWaysToTraverseGraph(int width, int height) {

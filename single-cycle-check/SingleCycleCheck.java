@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/single-cycle-check
 
-import java.util.*;
-
 public class SingleCycleCheck {
   /*
    * single cycle means we can start anywhere, visit every node exactly once,

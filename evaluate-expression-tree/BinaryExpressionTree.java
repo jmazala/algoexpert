@@ -1,6 +1,5 @@
 
 // https://www.algoexpert.io/questions/evaluate-expression-tree
-import java.util.*;
 
 class BinaryExpressionTree {
   // operands on left and right subtrees

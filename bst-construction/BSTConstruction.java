@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/bst-construction
 
-import java.util.*;
-
 class BSTConstruction {
   static class BST {
     public int value;

@@ -1,7 +1,5 @@
 // https://www.algoexpert.io/questions/youngest-common-ancestor
 
-import java.util.*;
-
 public class YoungestCommonAncestor {
 
   static class AncestralTree {
