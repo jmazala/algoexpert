@@ -1,3 +1,5 @@
+// https://www.algoexpert.io/questions/topological-sort
+
 function topologicalSort(jobs, deps) {
   //make a graph
   const degrees = {};
@@ -14,27 +16,27 @@ function topologicalSort(jobs, deps) {
   }
 
   //start with those with degree 0
-  const queue = [];
-  Object.keys(degrees).forEach(job => {
-    if (degrees[job] === 0) {
-      queue.push(+job);
-    }
-  });
-
-  const answer = [];
+  const queue = Object.keys(degrees).filter(job => degrees[job] === 0).map(job => +job);
+  const completed = [];
 
   while (queue.length) {
     const job = queue.shift();
-    answer.push(job);
-    prereqs[job].forEach(nextJob => {
-      degrees[nextJob] -= 1;
-      if (degrees[nextJob] == 0) {
+
+    // In the queue means completed
+    completed.push(job);
+
+    for (const nextJob of prereqs[job]) {
+      // We've completed a prereq
+      degrees[nextJob]--;
+
+      // If all prereqs are completed for nextJob, queue it
+      if (degrees[nextJob] === 0) {
         queue.push(nextJob);
       }
-    });
+    }
   }
 
-  return answer.length === jobs.length ? answer : [];
+  return completed.length === jobs.length ? completed : [];
 }
 
 // Do not edit the line below.

@@ -1,6 +1,7 @@
 // https://www.algoexpert.io/questions/topological-sort
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,8 +26,9 @@ class TopologicalSort {
     }
 
     Queue<Integer> queue = new LinkedList<>();
-    List<Integer> answer = new ArrayList<>();
+    List<Integer> completed = new ArrayList<>();
 
+    // Add all the jobs that can be started immediately to the queue
     for (Map.Entry<Integer, Integer> entry : degrees.entrySet()) {
       if (entry.getValue() == 0) {
         queue.add(entry.getKey());
@@ -35,7 +37,7 @@ class TopologicalSort {
 
     while (!queue.isEmpty()) {
       int job = queue.remove();
-      answer.add(job);
+      completed.add(job);
       for (int next : prereqs.get(job)) {
         degrees.put(next, degrees.get(next) - 1);
         if (degrees.get(next) == 0) {
@@ -44,21 +46,14 @@ class TopologicalSort {
       }
     }
 
-    return answer.size() == jobs.size() ? answer : new ArrayList<>();
+    // Check if we've completed all jobs
+    return completed.size() == jobs.size() ? completed : new ArrayList<>();
   }
 
   public static void main(String[] args) {
-    List<Integer> jobs = new ArrayList<>();
-    jobs.add(1);
-    jobs.add(2);
-    jobs.add(3);
-    jobs.add(4);
-    List<Integer[]> deps = new ArrayList<>();
-    deps.add(new Integer[] { 1, 2 });
-    deps.add(new Integer[] { 1, 3 });
-    deps.add(new Integer[] { 3, 2 });
-    deps.add(new Integer[] { 4, 2 });
-    deps.add(new Integer[] { 4, 3 });
+    List<Integer> jobs = new ArrayList<>(Arrays.asList(new Integer[] { 1, 2, 3, 4 }));
+    List<Integer[]> deps = new ArrayList<>(
+        Arrays.asList(new Integer[][] { { 1, 2 }, { 1, 3 }, { 3, 2 }, { 4, 2 }, { 4, 3 } }));
     System.out.println(topologicalSort(jobs, deps));
   }
 }
