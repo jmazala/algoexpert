@@ -1,7 +1,34 @@
 const _ = require('lodash');
 
-//2 pass solution
+// 1 pass solution
 function waterArea(heights) {
+  if (!heights.length) {
+    return 0;
+  }
+
+  let left = 0;
+  let right = heights.length - 1;
+  let leftMax = heights[left];
+  let rightMax = heights[right];
+  let water = 0;
+
+  while (left < right) {
+    if (heights[left] < heights[right]) {
+      left++;
+      leftMax = Math.max(leftMax, heights[left]);
+      water += leftMax - heights[left];
+    } else {
+      right--;
+      rightMax = Math.max(rightMax, heights[right]);
+      water += rightMax - heights[right];
+    }
+  }
+
+  return water;
+}
+
+//2 pass solution
+function waterArea2(heights) {
   const maxHeights = Array(heights.length);
   let leftMax = 0;
 
@@ -28,39 +55,39 @@ function waterArea(heights) {
 }
 
 //3 pass solution
-// function waterArea(heights) {
-//   const leftRightMaxHeights = heights.map(i => { return { left: -Infinity, right: -Infinity }; });
-//   let leftMax = -Infinity;
-//   let rightMax = -Infinity;
+function waterArea3(heights) {
+  const leftRightMaxHeights = heights.map(i => { return { left: -Infinity, right: -Infinity }; });
+  let leftMax = -Infinity;
+  let rightMax = -Infinity;
 
-//   //find leftMaxes at each point
-//   for (let i = 1; i < heights.length; i++) {
-//     leftMax = Math.max(leftMax, heights[i - 1]);
-//     leftRightMaxHeights[i].left = leftMax;
-//   }
+  //find leftMaxes at each point
+  for (let i = 1; i < heights.length; i++) {
+    leftMax = Math.max(leftMax, heights[i - 1]);
+    leftRightMaxHeights[i].left = leftMax;
+  }
 
-//   //find rightMaxes at each point
-//   for (let i = heights.length - 2; i >= 0; i--) {
-//     rightMax = Math.max(rightMax, heights[i + 1]);
-//     leftRightMaxHeights[i].right = rightMax;
-//   }
+  //find rightMaxes at each point
+  for (let i = heights.length - 2; i >= 0; i--) {
+    rightMax = Math.max(rightMax, heights[i + 1]);
+    leftRightMaxHeights[i].right = rightMax;
+  }
 
-//   let answer = 0;
+  let answer = 0;
 
-//   for (let i = 0; i < heights.length; i++) {
-//     const height = heights[i];
-//     const left = leftRightMaxHeights[i].left;
-//     const right = leftRightMaxHeights[i].right;
-//     if (left <= 0 || right <= 0) {
-//       continue;
-//     }
+  for (let i = 0; i < heights.length; i++) {
+    const height = heights[i];
+    const left = leftRightMaxHeights[i].left;
+    const right = leftRightMaxHeights[i].right;
+    if (left <= 0 || right <= 0) {
+      continue;
+    }
 
-//     const waterAtThisPoint = Math.min(left, right) - height;
-//     answer += Math.max(waterAtThisPoint, 0);
-//   }
+    const waterAtThisPoint = Math.min(left, right) - height;
+    answer += Math.max(waterAtThisPoint, 0);
+  }
 
-//   return answer;
-// }
+  return answer;
+}
 
 // Do not edit the line below.
 exports.waterArea = waterArea;

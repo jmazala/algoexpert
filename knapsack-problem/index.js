@@ -49,4 +49,5 @@ function getItemsUsed(matrix, items) {
 exports.knapsackProblem = knapsackProblem;
 
 //first is value, second is weight
-console.log(JSON.stringify(knapsackProblem([[4, 3], [1, 2], [5, 6], [6, 7], [10000, 25]], 10))); //[10, [1, 3]]
+console.log(JSON.stringify(knapsackProblem([[1, 2], [4, 3], [5, 6], [6, 7]], 10))); //[10, [3, 1]]
+console.log(JSON.stringify(knapsackProblem([[4, 3], [1, 2], [5, 6], [6, 7], [10000, 25]], 10))); //[10, [3, 0]]
