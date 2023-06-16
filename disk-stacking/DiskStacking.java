@@ -11,6 +11,7 @@ public class DiskStacking {
   final static int DEPTH = 1;
   final static int HEIGHT = 2;
 
+  @SuppressWarnings("unchecked")
   public static List<Integer[]> diskStacking(List<Integer[]> disks) {
     if (disks.size() == 0) {
       return new ArrayList<>();
