@@ -1,4 +1,9 @@
-import java.util.*;
+// https://www.algoexpert.io/questions/boggle-board
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 class BoggleBoard {
   private static TrieNode trie;
@@ -7,59 +12,54 @@ class BoggleBoard {
       { 0, -1 }, { 0, 1 } };
 
   public static List<String> boggleBoard(char[][] board, String[] words) {
-    Set<String> set = new HashSet<>();
-    List<String> answer = new ArrayList<>();
+    Set<String> result = new HashSet<>();
 
     if (words.length == 0) {
-      return answer;
+      return new LinkedList<String>();
     }
 
-    int M = board.length;
-    if (M == 0) {
-      return answer;
+    int m = board.length;
+    if (m == 0) {
+      return new LinkedList<String>();
     }
 
-    int N = board[0].length;
-    if (N == 0) {
-      return answer;
+    int n = board[0].length;
+    if (n == 0) {
+      return new LinkedList<String>();
     }
 
     buildTrie(words);
 
-    for (int i = 0; i < M; i++) {
-      for (int j = 0; j < N; j++) {
-        TrieNode temp = trie;
-        dfs(board, M, N, i, j, "", temp, set);
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        dfs(board, m, n, i, j, trie, result);
       }
     }
 
-    answer.addAll(set);
-    return answer;
+    return new LinkedList<String>(result);
   }
 
-  private static void dfs(char[][] board, int M, int N, int i, int j, String prefix, TrieNode node, Set<String> set) {
+  private static void dfs(char[][] board, int m, int n, int i, int j, TrieNode node, Set<String> result) {
+    if (i < 0 || i >= m || j < 0 || j >= n) {
+      return;
+    }
+
     if (node.isWord) {
-      set.add(prefix);
+      result.add(node.word);
     }
 
     char c = board[i][j];
-    board[i][j] = PLACEHOLDER;
     if (node.children.containsKey(c)) {
+      board[i][j] = PLACEHOLDER;
+
       TrieNode next = node.children.get(c);
 
       for (int[] direction : DIRECTIONS) {
-        int nextI = i + direction[0];
-        int nextJ = j + direction[1];
-
-        if (nextI < 0 || nextI >= M || nextJ < 0 || nextJ >= N) {
-          continue;
-        }
-
-        dfs(board, M, N, nextI, nextJ, prefix + c, next, set);
+        dfs(board, m, n, i + direction[0], j + direction[1], next, result);
       }
-    }
 
-    board[i][j] = c;
+      board[i][j] = c;
+    }
   }
 
   private static void buildTrie(String[] words) {

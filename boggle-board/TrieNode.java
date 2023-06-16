@@ -4,15 +4,18 @@ import java.util.Map;
 public class TrieNode {
   Map<Character, TrieNode> children;
   boolean isWord;
+  String word;
 
   public TrieNode() {
     this.children = new HashMap<>();
     this.isWord = false;
+    this.word = null;
   }
 
-  public TrieNode(Map<Character, TrieNode> children, boolean isWord) {
+  public TrieNode(Map<Character, TrieNode> children, boolean isWord, String word) {
     this.children = children;
     this.isWord = isWord;
+    this.word = word;
   }
 
   /**
@@ -32,6 +35,7 @@ public class TrieNode {
     }
 
     temp.isWord = true;
+    temp.word = word;
   }
 
   /**
