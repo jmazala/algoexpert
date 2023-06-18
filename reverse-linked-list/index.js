@@ -1,4 +1,10 @@
-const { LinkedListNode } = require('../js-includes');
+// https://www.algoexpert.io/questions/reverse-linked-list
+class LinkedList {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 
 function reverseLinkedList(head) {
   if (!head || !head.next) {
@@ -21,9 +27,9 @@ function reverseLinkedList(head) {
 // Do not edit the line below.
 exports.reverseLinkedList = reverseLinkedList;
 
-const head = new LinkedListNode(1);
-head.next = new LinkedListNode(2);
-head.next.next = new LinkedListNode(3);
+const head = new LinkedList(1);
+head.next = new LinkedList(2);
+head.next.next = new LinkedList(3);
 
 let newHead = reverseLinkedList(head);
 let output = '';
