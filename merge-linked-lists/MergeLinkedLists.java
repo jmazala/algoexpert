@@ -6,6 +6,9 @@ class MergeLinkedLists {
   // This is an input class. Do not edit.
 
   public static LinkedList mergeLinkedLists(LinkedList headOne, LinkedList headTwo) {
+    /*
+     * Use 3 pointers and merge list 2 into list 1
+     */
     LinkedList prev = null;
     LinkedList p1 = headOne;
     LinkedList p2 = headTwo;
@@ -17,6 +20,7 @@ class MergeLinkedLists {
         continue;
       }
 
+      // edge case when we're NOT at the head
       if (prev != null) {
         prev.next = p2;
       }
