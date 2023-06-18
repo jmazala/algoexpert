@@ -1,4 +1,4 @@
-//https://www.algoexpert.io/questions/Shift%20Linked%20List
+// https://www.algoexpert.io/questions/shift-linked-list
 
 //using my class for print() function
 const { LinkedListNode } = require('../js-includes');
@@ -12,7 +12,7 @@ function shiftLinkedList(head, k) {
   //how much to actually shift.
   let length = 1;
   let lastElement = head;
-  
+
   while (lastElement.next) {
     lastElement = lastElement.next;
     length++;
