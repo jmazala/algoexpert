@@ -1,14 +1,9 @@
+// https://www.algoexpert.io/questions/merge-linked-lists
+
+import utils.algoexpert.LinkedList;
+
 class MergeLinkedLists {
   // This is an input class. Do not edit.
-  public static class LinkedList {
-    int value;
-    LinkedList next;
-
-    LinkedList(int value) {
-      this.value = value;
-      this.next = null;
-    }
-  }
 
   public static LinkedList mergeLinkedLists(LinkedList headOne, LinkedList headTwo) {
     LinkedList prev = null;
