@@ -1,17 +1,15 @@
 // https://www.algoexpert.io/questions/merge-linked-lists
 
-import utils.algoexpert.LinkedList;
-
 class MergeLinkedLists {
   // This is an input class. Do not edit.
 
-  public static LinkedList mergeLinkedLists(LinkedList headOne, LinkedList headTwo) {
+  public static ListNode mergeLinkedLists(ListNode headOne, ListNode headTwo) {
     /*
      * Use 3 pointers and merge list 2 into list 1
      */
-    LinkedList prev = null;
-    LinkedList p1 = headOne;
-    LinkedList p2 = headTwo;
+    ListNode prev = null;
+    ListNode p1 = headOne;
+    ListNode p2 = headTwo;
 
     while (p1 != null && p2 != null) {
       if (p1.value < p2.value) {

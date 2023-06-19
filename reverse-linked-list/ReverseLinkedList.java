@@ -1,18 +1,16 @@
 // https://www.algoexpert.io/questions/reverse-linked-list
 
-import utils.algoexpert.LinkedList;
-
 public class ReverseLinkedList {
-  public static LinkedList reverseLinkedList(LinkedList head) {
+  public static ListNode reverseLinkedList(ListNode head) {
     if (head == null || head.next == null) {
       return head;
     }
 
-    LinkedList prev = null;
-    LinkedList current = head;
+    ListNode prev = null;
+    ListNode current = head;
 
     while (current != null) {
-      LinkedList next = current.next;
+      ListNode next = current.next;
       current.next = prev;
       prev = current;
       current = next;

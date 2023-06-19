@@ -1,9 +1,7 @@
 // https://www.algoexpert.io/questions/shift-linked-list
 
-import utils.algoexpert.LinkedList;
-
 public class ShiftLinkedList {
-  public static LinkedList shiftLinkedList(LinkedList head, int k) {
+  public static ListNode shiftLinkedList(ListNode head, int k) {
     if (head == null || head.next == null) {
       return head;
     }
@@ -13,7 +11,7 @@ public class ShiftLinkedList {
      * into a positive shift.
      */
     int length = head.length();
-    LinkedList lastNode = head.lastNode();
+    ListNode lastNode = head.lastNode();
 
     k %= length;
 
@@ -25,8 +23,8 @@ public class ShiftLinkedList {
       k = length + k;
     }
 
-    LinkedList kthLastNode = head;
-    LinkedList beforeKthLastNode = head;
+    ListNode kthLastNode = head;
+    ListNode beforeKthLastNode = head;
 
     /*
      * Find kth to last element, this is new head,
@@ -51,12 +49,12 @@ public class ShiftLinkedList {
   }
 
   public static void main(String[] args) {
-    LinkedList head = new LinkedList(0);
-    head.next = new LinkedList(1);
-    head.next.next = new LinkedList(2);
-    head.next.next.next = new LinkedList(3);
-    head.next.next.next.next = new LinkedList(4);
-    head.next.next.next.next.next = new LinkedList(5);
+    ListNode head = new ListNode(0);
+    head.next = new ListNode(1);
+    head.next.next = new ListNode(2);
+    head.next.next.next = new ListNode(3);
+    head.next.next.next.next = new ListNode(4);
+    head.next.next.next.next.next = new ListNode(5);
     System.out.println(shiftLinkedList(head, 2).toString()); // 4 -> 5 -> 0 -> 1 -> 2 -> 3
   }
 }

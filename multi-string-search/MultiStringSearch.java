@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import utils.algoexpert.TrieNode;
-
 class MultiStringSearch {
 
   static class TrieNodeWithWordIndex extends TrieNode {
