@@ -147,10 +147,12 @@ public class InterweavingStrings {
       }
     }
 
+    memo[p1][p2] = false;
     return false;
   }
 
   public static void main(String[] args) {
+    System.out.println(interweavingStrings("aabcc", "dbbca", "aadbbbaccc"));
     System.out.println(interweavingStrings3("abc", "def", "adbecf")); // true
     System.out.println(interweavingStrings3("beansprouting", "chartera", "banana")); // false
     System.out.println(interweavingStrings3("algoexpert", "your-dream-job", "your-algodream-expertjob")); // true
