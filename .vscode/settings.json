@@ -40,6 +40,7 @@
     "semordnilap",
     "selection-sort",
     "search-in-sorted-matrix",
+    "search-for-range",
     "same-bsts",
     "river-sizes",
     "reverse-words-in-string",
@@ -131,6 +132,6 @@
     "best-digits",
     "balanced-brackets",
     "ambiguous-measurements",
-    "search-for-range"
+    "heap-sort"
   ]
 }

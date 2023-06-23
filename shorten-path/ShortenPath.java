@@ -21,6 +21,11 @@ class ShortenPath {
       stack.push("");
     }
 
+    /*
+     * Case:
+     * '..' pop off stack if there is anything to pop off. otherwise append
+     * else just add to stack
+     */
     for (String token : filteredTokens) {
       if (!token.equals("..")) {
         stack.push(token);
