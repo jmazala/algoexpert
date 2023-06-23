@@ -1,3 +1,5 @@
+// https://www.algoexpert.io/questions/quick-sort
+
 import java.util.Arrays;
 
 class QuickSort {
@@ -17,18 +19,30 @@ class QuickSort {
   }
 
   private static int partition(int[] array, int low, int high) {
-    final int pivot = array[high];
-    int i = low;
+    final int pivot = array[low];
 
-    for (int j = low; j < high; j++) {
-      if (array[j] < pivot) {
+    int i = low + 1;
+    int j = high;
+
+    while (i <= j) {
+      if (array[i] > pivot && array[j] < pivot) {
         swap(array, i, j);
         i++;
+        j--;
+        continue;
+      }
+
+      if (array[i] <= pivot) {
+        i++;
+      }
+
+      if (array[j] >= pivot) {
+        j--;
       }
     }
 
-    swap(array, i, high);
-    return i;
+    swap(array, low, j);
+    return j;
   }
 
   private static void swap(int[] array, int i, int j) {

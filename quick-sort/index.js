@@ -1,3 +1,5 @@
+// https://www.algoexpert.io/questions/quick-sort
+
 function quickSort(array) {
   helper(0, array.length - 1);
   return array;
@@ -13,17 +15,29 @@ function quickSort(array) {
   }
 
   function partition(low, high) {
-    const pivot = array[high];
-    let i = low;
-    for (let j = low; j < high; j++) {
-      if (array[j] < pivot) {
+    const pivot = array[low];
+    let i = low + 1;
+    let j = high;
+
+    while (i <= j) {
+      if (array[i] > pivot && array[j] < pivot) {
         swap(array, i, j);
         i++;
+        j--;
+        continue;
+      }
+
+      if (array[i] <= pivot) {
+        i++;
+      }
+
+      if (array[j] >= pivot) {
+        j--;
       }
     }
 
-    swap(array, i, high);
-    return i;
+    swap(array, low, j);
+    return j;
   }
 }
 
