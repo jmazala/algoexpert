@@ -1,3 +1,5 @@
+// https://www.algoexpert.io/questions/shorten-path
+
 function shortenPath(path) {
   const isAbsolutePath = path[0] === '/';
   const tokens = path.split('/').filter(i => i !== '.' && i !== '');
@@ -34,3 +36,6 @@ function shortenPath(path) {
 
 // Do not edit the line below.
 exports.shortenPath = shortenPath;
+
+console.log(shortenPath('../a/b/../../c/d/../e/../../f/..')); // ..
+console.log(shortenPath('/foo/../test/../test/../foo//bar/./baz')); // /foo/bar/baz

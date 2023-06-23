@@ -1,9 +1,16 @@
-import java.util.*;
+// https://www.algoexpert.io/questions/shorten-path
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 class ShortenPath {
   public static String shortenPath(String path) {
     String[] tokens = path.split("/");
+    /*
+     * Take away '.', '' (occurs with //)
+     */
     List<String> filteredTokens = Arrays.asList(tokens).stream().filter((a) -> a.length() > 0 && !a.equals("."))
         .collect(Collectors.toList());
 
@@ -35,6 +42,7 @@ class ShortenPath {
     }
 
     StringBuilder builder = new StringBuilder();
+
     while (!stack.isEmpty()) {
       builder.append(stack.remove(0));
       if (!stack.isEmpty()) {
