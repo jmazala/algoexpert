@@ -35,6 +35,7 @@
     "smallest-difference",
     "single-cycle-check",
     "shorten-path",
+    "shifted-binary-search",
     "shift-linked-list",
     "semordnilap",
     "selection-sort",
@@ -129,6 +130,6 @@
     "best-digits",
     "balanced-brackets",
     "ambiguous-measurements",
-    "shifted-binary-search"
+    "longest-subarray-with-sum"
   ]
 }
