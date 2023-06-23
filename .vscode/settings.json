@@ -86,6 +86,7 @@
     "max-path-sum-in-binary-tree",
     "majority-element",
     "lowest-common-manager",
+    "longest-subarray-with-sum",
     "longest-peak",
     "longest-palindromic-substring",
     "longest-common-subsequence",
@@ -130,6 +131,6 @@
     "best-digits",
     "balanced-brackets",
     "ambiguous-measurements",
-    "longest-subarray-with-sum"
+    "search-for-range"
   ]
 }

@@ -1,18 +1,16 @@
+// https://www.algoexpert.io/questions/quickselect
+
+import java.util.Arrays;
+
 class Quickselect {
   public static int quickselect(int[] array, int k) {
-    return helper(array, 0, array.length - 1, k - 1);
-  }
+    int low = 0;
+    int high = array.length - 1;
 
-  private static void swap(int[] array, int i, int j) {
-    int temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-
-  private static int helper(int[] array, int low, int high, int position) {
     while (true) {
+      // Arbitrarily pick a pivot
       final int pivot = low;
-      int left = pivot + 1;
+      int left = low + 1;
       int right = high;
 
       while (left <= right) {
@@ -32,16 +30,27 @@ class Quickselect {
         }
       }
 
-      swap(array, right, pivot);
-      if (right == position) {
+      swap(array, pivot, right);
+      if (right == k - 1) {
         return array[right];
       }
 
-      if (right > position) {
-        high = right - 1;
-      } else {
+      if (right < k - 1) {
         low = right + 1;
+      } else {
+        high = right - 1;
       }
     }
+  }
+
+  private static void swap(int[] array, int i, int j) {
+    int temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  public static void main(String[] args) {
+    Arrays.toString(new int[] {});
+    System.out.println(quickselect(new int[] { 8, 5, 2, 9, 7, 6, 3 }, 3)); // 5
   }
 }

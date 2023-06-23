@@ -1,7 +1,9 @@
+// https://www.algoexpert.io/questions/quickselect
+
 function quickselect(array, k) {
   let low = 0;
   let high = array.length - 1;
-  
+
   while (true) {
     const pivot = low;
     let left = low + 1;

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class QuickSort {
   public static int[] quickSort(int[] array) {
     helper(array, 0, array.length - 1);
@@ -33,5 +35,9 @@ class QuickSort {
     int temp = array[i];
     array[i] = array[j];
     array[j] = temp;
+  }
+
+  public static void main(String[] args) {
+    System.out.println(Arrays.toString(quickSort(new int[] { 8, 5, 2, 9, 7, 6, 3 })));
   }
 }
