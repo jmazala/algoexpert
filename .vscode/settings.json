@@ -50,6 +50,7 @@
     "remove-kth-node-from-end",
     "remove-islands",
     "reconstruct-bst",
+    "radix-sort",
     "quickselect",
     "quick-sort",
     "product-sum",
@@ -133,6 +134,6 @@
     "best-digits",
     "balanced-brackets",
     "ambiguous-measurements",
-    "radix-sort"
+    "apartment-hunting"
   ]
 }
