@@ -106,6 +106,7 @@
     "interweaving-strings",
     "insertion-sort",
     "index-equals-value",
+    "heap-sort",
     "group-anagrams",
     "generate-document",
     "four-number-sum",
@@ -132,6 +133,6 @@
     "best-digits",
     "balanced-brackets",
     "ambiguous-measurements",
-    "heap-sort"
+    "radix-sort"
   ]
 }
