@@ -107,14 +107,6 @@ class CalendarMatching {
       int start = stringToInt(meeting1.end);
       int end = stringToInt(meeting2.start);
 
-      // while (addTime(end, meetingDuration) <= stringToInt(meeting2.start)) {
-      // end = addTime(end, meetingDuration);
-      // }
-
-      // if (end > start) {
-      // output.add(new StringMeeting(intToString(start), intToString(end)));
-      // }
-
       if (subtractTime(end, start) >= meetingDuration) {
         output.add(new StringMeeting(meeting1.end, meeting2.start));
       }
@@ -123,6 +115,10 @@ class CalendarMatching {
     return output;
   }
 
+  /*
+   * Times are stored in integers where 09:00 = 900, 12:30 = 1230 etc
+   * This returns the number of minutes difference.
+   */
   private static int subtractTime(int time1, int time2) {
     int hours1 = time1 / 100; // Extracting hours from time1
     int minutes1 = time1 % 100; // Extracting minutes from time1
@@ -136,24 +132,6 @@ class CalendarMatching {
     int difference = totalMinutes1 - totalMinutes2; // Calculating the difference in minutes
 
     return difference;
-  }
-
-  private static int addTime(int time, int duration) {
-    time += duration;
-
-    if (time % 100 >= 60) {
-      time += 40;
-    }
-
-    return time;
-  }
-
-  private static String intToString(int time) {
-    int hours = time / 100; // Extracting hours from the time
-    int minutes = time % 100; // Extracting minutes from the time
-
-    String formattedTime = String.format("%02d:%02d", hours, minutes);
-    return formattedTime;
   }
 
   private static int stringToInt(String time) {
