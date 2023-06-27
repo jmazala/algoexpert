@@ -5,88 +5,74 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class Program {
+class ApartmentHunting {
+
+  /*
+   * This is definitely a DP problem, and the complexity really just comes from
+   * converting around
+   * through data types (i.e. string for reqs, which are keys in the blocks hash).
+   * The other complexity is from the score. Each block's score represents how far
+   * the furthest requirement is from it. i.e. if you need a gym and a store,
+   * if the gym is 1 block away and the store is 5 blocks away, the score is 5
+   * because you must go to the store. That would still be worse than a block with
+   * a store 3 blocks away and a store 3 blocks away. Even though you have to walk
+   * 6 to go to both, your max is 5.
+   * 
+   * TIME: O(br) for loops through blocks and reqs (1 left to right, 1 right to
+   * left, 1 for score)
+   * SPACE: O(br) for distances matrix
+   */
   public static int apartmentHunting(List<Map<String, Boolean>> blocks, String[] reqs) {
-    int[][] maxDistanceLeft = new int[reqs.length][blocks.size()];
-    int[][] maxDistanceRight = new int[reqs.length][blocks.size()];
+    // left to right
+    int[][] distances = new int[reqs.length][blocks.size()];
 
     for (int reqIndex = 0; reqIndex < reqs.length; reqIndex++) {
+      int distance = Integer.MAX_VALUE;
       String req = reqs[reqIndex];
-      maxDistanceLeft[reqIndex][0] = blocks.get(0).get(req) ? 0 : Integer.MAX_VALUE;
-      maxDistanceRight[reqIndex][blocks.size() - 1] = blocks.get(blocks.size() - 1).get(req) ? 0
-          : Integer.MAX_VALUE;
-    }
 
-    for (int blockIndex = 1; blockIndex < blocks.size(); blockIndex++) {
-      Map<String, Boolean> block = blocks.get(blockIndex);
-
-      for (int reqIndex = 0; reqIndex < reqs.length; reqIndex++) {
-        String req = reqs[reqIndex];
-
-        if (block.get(req)) {
-          maxDistanceLeft[reqIndex][blockIndex] = 0;
+      for (int blockIndex = 0; blockIndex < blocks.size(); blockIndex++) {
+        if (blocks.get(blockIndex).get(req)) {
+          distance = 0;
         } else {
-          if (maxDistanceLeft[reqIndex][blockIndex - 1] == Integer.MAX_VALUE) {
-            maxDistanceLeft[reqIndex][blockIndex] = Integer.MAX_VALUE;
-          } else {
-            maxDistanceLeft[reqIndex][blockIndex] = 1 + maxDistanceLeft[reqIndex][blockIndex - 1];
-          }
+          distance = distance == Integer.MAX_VALUE ? Integer.MAX_VALUE : distance + 1;
         }
+
+        distances[reqIndex][blockIndex] = distance;
       }
     }
 
-    for (int blockIndex = blocks.size() - 2; blockIndex >= 0; blockIndex--) {
-      Map<String, Boolean> block = blocks.get(blockIndex);
+    // right to left
+    for (int reqIndex = 0; reqIndex < reqs.length; reqIndex++) {
+      int distance = Integer.MAX_VALUE;
+      String req = reqs[reqIndex];
 
-      for (int reqIndex = 0; reqIndex < reqs.length; reqIndex++) {
-        String req = reqs[reqIndex];
-
-        if (block.get(req)) {
-          maxDistanceRight[reqIndex][blockIndex] = 0;
+      for (int blockIndex = blocks.size() - 1; blockIndex >= 0; blockIndex--) {
+        if (blocks.get(blockIndex).get(req)) {
+          distance = 0;
         } else {
-          if (maxDistanceRight[reqIndex][blockIndex + 1] == Integer.MAX_VALUE) {
-            maxDistanceRight[reqIndex][blockIndex] = Integer.MAX_VALUE;
-          } else {
-            maxDistanceRight[reqIndex][blockIndex] = 1 + maxDistanceRight[reqIndex][blockIndex + 1];
-          }
+          distance = distance == Integer.MAX_VALUE ? Integer.MAX_VALUE : distance + 1;
         }
+
+        distances[reqIndex][blockIndex] = Math.min(distances[reqIndex][blockIndex], distance);
       }
     }
 
-    int bestIndex = 0;
-    int bestValue = Integer.MAX_VALUE;
+    int bestScore = Integer.MAX_VALUE;
+    int bestBlock = -1;
 
     for (int blockIndex = 0; blockIndex < blocks.size(); blockIndex++) {
-      int maxDistanceForBlock = 0;
-
+      int blockScore = 0;
       for (int reqIndex = 0; reqIndex < reqs.length; reqIndex++) {
-        int leftDistance = maxDistanceLeft[reqIndex][blockIndex];
-        int rightDistance = maxDistanceRight[reqIndex][blockIndex];
-
-        if (leftDistance == 0 || rightDistance == 0) {
-          continue;
-        }
-
-        int distanceForReq = 0;
-
-        if (leftDistance == Integer.MAX_VALUE) {
-          distanceForReq = rightDistance;
-        } else if (rightDistance == Integer.MAX_VALUE) {
-          distanceForReq = leftDistance;
-        } else {
-          distanceForReq = Math.max(leftDistance, rightDistance);
-        }
-
-        maxDistanceForBlock = Math.max(maxDistanceForBlock, distanceForReq);
+        blockScore = Math.max(blockScore, distances[reqIndex][blockIndex]);
       }
 
-      if (maxDistanceForBlock < bestValue) {
-        bestValue = maxDistanceForBlock;
-        bestIndex = blockIndex;
+      if (blockScore < bestScore) {
+        bestScore = blockScore;
+        bestBlock = blockIndex;
       }
     }
 
-    return bestIndex;
+    return bestBlock;
   }
 
   public static void main(String[] args) {
