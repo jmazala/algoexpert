@@ -123,6 +123,7 @@
     "count-squares",
     "continuous-median",
     "class-photos",
+    "calendar-matching",
     "caesar-cipher-encryptor",
     "bubble-sort",
     "bst-traversal",
@@ -135,6 +136,6 @@
     "balanced-brackets",
     "apartment-hunting",
     "ambiguous-measurements",
-    "calendar-matching"
+    "waterfall-streams"
   ]
 }
