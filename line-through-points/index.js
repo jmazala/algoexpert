@@ -9,8 +9,6 @@ function lineThroughPoints(points) {
     return points.length;
   }
 
-  points.sort((a, b) => a[0] === b[0] ? a[1] - b[1] : a[0] - b[0]);
-
   let maxPoints = 2;
   let hash;
 
