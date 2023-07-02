@@ -7,6 +7,7 @@
   "java.project.sourcePaths": [
     "zigzag-traverse",
     "youngest-common-ancestor",
+    "waterfall-streams",
     "water-area",
     "validate-three-nodes",
     "validate-bst",
@@ -136,6 +137,6 @@
     "balanced-brackets",
     "apartment-hunting",
     "ambiguous-measurements",
-    "waterfall-streams"
+    "right-smaller-than"
   ]
 }
