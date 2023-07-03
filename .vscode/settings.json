@@ -44,6 +44,7 @@
     "search-for-range",
     "same-bsts",
     "river-sizes",
+    "right-smaller-than",
     "reverse-words-in-string",
     "reverse-polish-notation",
     "reverse-linked-list",
@@ -137,6 +138,6 @@
     "balanced-brackets",
     "apartment-hunting",
     "ambiguous-measurements",
-    "right-smaller-than"
+    "iterative-in-order-traversal"
   ]
 }
