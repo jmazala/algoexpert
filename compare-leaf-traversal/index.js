@@ -162,7 +162,7 @@ we can compare if the linked lists are equal
 TIME: O(n) because we traverse every node
 SPACE: O(h) for recursion stack where h is larger of 2 trees height
 */
-function compareLeafTraversal(tree1, tree2) {
+function compareLeafTraversal3(tree1, tree2) {
   let [node1, _] = connectLeafNodes(tree1, null, null);
   let [node2, __] = connectLeafNodes(tree2, null, null);
 
@@ -203,6 +203,81 @@ function connectLeafNodes(current, head, previous) {
 
   const [leftHead, leftPrevious] = connectLeafNodes(current.left, head, previous);
   return connectLeafNodes(current.right, leftHead, leftPrevious);
+}
+
+/*
+Method 4 is exactly the same as method 3.
+Just we don't use return values in the helper function.
+Instead we expose them locally and embed the function inside
+the larger function.
+
+This is just meant to show what's really going on here if
+the return values from the recursive functions in method 3 are confusing
+*/
+
+/*
+Method 3
+Recursively travel the tree
+When you encounter leaf nodes, link the previous leaf node's
+right child to the current leaf node.  Effectively this
+creates a linked list starting at leftmost leaf node
+and ending at rightmost leaf node.  And each recursive call
+needs to return (it's) leftmost leaf node.  That
+goes up to the first function call where we can then
+traverse the linkedlist.  By doing this on both trees
+we can compare if the linked lists are equal
+
+TIME: O(n) because we traverse every node
+SPACE: O(h) for recursion stack where h is larger of 2 trees height
+*/
+function compareLeafTraversal(tree1, tree2) {
+  let head = null;
+  let previous = null;
+  connectLeafNodes(tree1);
+  let node1 = head;
+
+  head = null;
+  previous = null;
+  connectLeafNodes(tree2);
+  let node2 = head;
+
+  while (node1 && node2) {
+    if (node1.value !== node2.value) {
+      return false;
+    }
+
+    node1 = node1.right;
+    node2 = node2.right;
+  }
+
+  return !node1 && !node2;
+
+  /*
+  Effectively, head is only set 1 time and represents the head
+  of the entire linked list (i.e. roots leftmost leaf node)
+  Previous keeps track of the last node in the linked list so we
+  can append to it when we find another leaf node
+  */
+  function connectLeafNodes(current) {
+    if (!current) {
+      return;
+    }
+
+    if (isLeafNode(current)) {
+      // Set head for the first (and only) time
+      if (!previous) {
+        head = current;
+      } else {
+        // otherwise append to the linked list
+        previous.right = current;
+      }
+
+      previous = current;
+    }
+
+    connectLeafNodes(current.left);
+    connectLeafNodes(current.right);
+  }
 }
 
 // Do not edit the lines below.
