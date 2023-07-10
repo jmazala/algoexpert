@@ -1,6 +1,13 @@
 // https://www.algoexpert.io/questions/longest-palindromic-substring
 
 public class LongestPalindromicSubstring {
+  /*
+   * For every character in str, check the 2 palindrome cases:
+   * 1 - single char in the middle ("aba")
+   * 2 - double char in the middle ("abba")
+   * For as long as the string is a palindrome and can be expanded, expand
+   * Compare the palindromic strings with your answer
+   */
   public static String longestPalindromicSubstring(String str) {
     if (str.length() < 2) {
       return str;
@@ -9,23 +16,21 @@ public class LongestPalindromicSubstring {
     String answer = new String(new char[] { str.charAt(0) });
 
     for (int i = 1; i < str.length(); i++) {
-      String tempDoubleChar = "";
       /*
        * A palindrome can start with a single char in the middle ("aba")
        * Or a pair of the same char in the middle ("abba")
        */
       if (str.charAt(i) == str.charAt(i - 1)) {
-        tempDoubleChar = palindromicSubstringFrom(i - 1, i, str);
+        String doublePalindrome = palindromicSubstringFrom(i - 1, i, str);
+        if (doublePalindrome.length() > answer.length()) {
+          answer = doublePalindrome;
+        }
       }
 
-      String tempSingleChar = palindromicSubstringFrom(i - 1, i + 1, str);
+      String singlePalindrome = palindromicSubstringFrom(i - 1, i + 1, str);
 
-      if (tempDoubleChar.length() > answer.length()) {
-        answer = tempDoubleChar;
-      }
-
-      if (tempSingleChar.length() > answer.length()) {
-        answer = tempSingleChar;
+      if (singlePalindrome.length() > answer.length()) {
+        answer = singlePalindrome;
       }
     }
 
