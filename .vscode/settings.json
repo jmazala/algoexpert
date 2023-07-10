@@ -105,6 +105,7 @@
     "kadanes-algorithm",
     "juice-bottling",
     "java-includes",
+    "iterative-in-order-traversal",
     "invert-binary-tree",
     "interweaving-strings",
     "insertion-sort",
@@ -138,6 +139,6 @@
     "balanced-brackets",
     "apartment-hunting",
     "ambiguous-measurements",
-    "iterative-in-order-traversal"
+    "max-profit-with-k-transactions"
   ]
 }
