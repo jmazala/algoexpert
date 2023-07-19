@@ -87,6 +87,7 @@
     "maximize-expression",
     "max-sum-increasing-subsequence",
     "max-subset-sum-no-adjacent",
+    "max-profit-with-k-transactions",
     "max-path-sum-in-binary-tree",
     "majority-element",
     "lowest-common-manager",
@@ -139,6 +140,6 @@
     "balanced-brackets",
     "apartment-hunting",
     "ambiguous-measurements",
-    "max-profit-with-k-transactions"
+    "longest-increasing-subsequence"
   ]
 }
