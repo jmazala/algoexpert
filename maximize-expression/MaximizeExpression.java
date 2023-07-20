@@ -37,24 +37,24 @@ class MaximizeExpression {
     }
 
     // store max(a) at any point i
-    int[] maxA = new int[array.length];
+    int[] maxA = new int[array.length - 1];
     maxA[0] = array[0];
-    for (int i = 1; i < array.length; i++) {
+    for (int i = 1; i < array.length - 1; i++) {
       maxA[i] = Math.max(maxA[i - 1], array[i]);
     }
 
     // store max(a-b) at any point i
-    int[] maxAMinusB = new int[array.length];
+    int[] maxAMinusB = new int[array.length - 1];
     maxAMinusB[0] = Integer.MIN_VALUE;
-    for (int i = 1; i < array.length; i++) {
+    for (int i = 1; i < array.length - 1; i++) {
       maxAMinusB[i] = Math.max(maxAMinusB[i - 1], maxA[i - 1] - array[i]);
     }
 
     // store max(a-b+c) at any point i
-    int[] maxAMinusBPlusC = new int[array.length];
+    int[] maxAMinusBPlusC = new int[array.length - 1];
     maxAMinusBPlusC[0] = Integer.MIN_VALUE;
     maxAMinusBPlusC[1] = Integer.MIN_VALUE;
-    for (int i = 2; i < array.length; i++) {
+    for (int i = 2; i < array.length - 1; i++) {
       maxAMinusBPlusC[i] = Math.max(maxAMinusBPlusC[i - 1], maxAMinusB[i - 1] + array[i]);
     }
 
