@@ -1,7 +1,9 @@
 # https://www.algoexpert.io/questions/longest-peak
 
+from typing import List
 
-def longestPeak(array):
+
+def longestPeak(array: List[int]) -> int:
     # go through the array to find a peak
     answer = 0
     i = 1
