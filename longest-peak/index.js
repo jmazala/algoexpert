@@ -1,5 +1,6 @@
+// https://www.algoexpert.io/questions/longest-peak
+
 function longestPeak(array) {
-  let currentPeakLength = 0;
   let answer = 0;
 
   //measure increasing until the top, recording the length
@@ -8,12 +9,12 @@ function longestPeak(array) {
 
   while (i < array.length - 1) {
     const isPeak = array[i] > array[i - 1] && array[i] > array[i + 1];
+
     if (!isPeak) {
       i++;
       continue;
     }
 
-    //we've found a peak, let's see how long it is
     let left = i - 1;
     while (left > 0 && array[left - 1] < array[left]) {
       left--;
