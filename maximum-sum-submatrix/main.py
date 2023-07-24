@@ -39,6 +39,7 @@ def maximumSumSubmatrix(matrix: List[List[int]], size: int):
                 for t in range(0, s):
                     sum += matrix[i + t][j + s - 1]
 
+                # loop to s-1 here to avoid double applying bottom right corner
                 for t in range(0, s - 1):
                     sum += matrix[i + s - 1][j + t]
 
