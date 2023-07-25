@@ -25,8 +25,8 @@ def getDigitFromNumber(number: int, digit: int) -> int:
 
 
 def countingSort(array: List[int], digit: int) -> List[int]:
-    sorted = [None for _ in array]
-    counts = [0 for _ in range(10)]
+    sorted = [None] * len(array)
+    counts = [0] * 10
 
     for number in array:
         digitValue = getDigitFromNumber(number, digit)
@@ -44,4 +44,6 @@ def countingSort(array: List[int], digit: int) -> List[int]:
     return sorted
 
 
-print(radixSort([8762, 654, 3008, 345, 87, 65, 234, 12, 2]))
+print(
+    radixSort([8762, 654, 3008, 345, 87, 65, 234, 12, 2])
+)  # [2, 12, 65, 87, 234, 345, 654, 3008, 8762]

@@ -13,7 +13,7 @@ def interweavingStrings(one: str, two: str, three: str) -> bool:
     if len(one) + len(two) != len(three):
         return False
 
-    memo = [[None for _ in range(len(two) + 1)] for _ in range(len(one) + 1)]
+    memo = [[None] * (len(two) + 1) for _ in range(len(one) + 1)]
     return helper(0, 0, one, two, three, memo)
 
 

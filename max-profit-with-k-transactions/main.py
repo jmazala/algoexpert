@@ -9,7 +9,7 @@ def maxProfitWithKTransactions(prices: List[int], k: int) -> int:
 
     # Build a 2D array with # of transactions for rows, # of days for cols
 
-    dp = [[0 for _ in prices] for _ in range(k + 1)]
+    dp = [[0] * len(prices) for _ in range(k + 1)]
 
     for t in range(1, k + 1):
         maxSoFar = float("-inf")

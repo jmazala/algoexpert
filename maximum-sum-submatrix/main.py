@@ -25,7 +25,7 @@ def maximumSumSubmatrix(matrix: List[List[int]], size: int):
     m = len(matrix)
     n = len(matrix[0])
 
-    dp = [[[0 for _ in range(size + 1)] for _ in range(n)] for _ in range(m)]
+    dp = [[[0] * (size + 1) for _ in range(n)] for _ in range(m)]
     answer = float("-inf")
 
     for i in range(m):
@@ -52,5 +52,5 @@ def maximumSumSubmatrix(matrix: List[List[int]], size: int):
 
 
 matrix = [[5, 3, -1, 5], [-7, 3, 7, 4], [12, 8, 0, 0], [1, -8, -8, 2]]
-# print(maximumSumSubmatrix(matrix, 1))  # 12
+print(maximumSumSubmatrix(matrix, 1))  # 12
 print(maximumSumSubmatrix(matrix, 2))  # 18
