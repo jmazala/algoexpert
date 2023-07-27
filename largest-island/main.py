@@ -129,6 +129,7 @@ def largestIsland(matrix: List[List[int]]) -> int:
     return largestIslandSize
 
 
+# Use BFS to calculate island size
 def getIslandSize(i: int, j: int, matrix: List[int], islandNumber: int) -> int:
     m = len(matrix)
     n = len(matrix[0])
@@ -145,13 +146,7 @@ def getIslandSize(i: int, j: int, matrix: List[int], islandNumber: int) -> int:
 
         for [dirI, dirJ] in DIRECTIONS:
             [nextI, nextJ] = [curI + dirI, curJ + dirJ]
-            if (
-                nextI >= m
-                or nextJ >= n
-                or nextI < 0
-                or nextJ < 0
-                or matrix[nextI][nextJ] != LAND
-            ):
+            if nextI >= m or nextJ >= n or nextI < 0 or nextJ < 0:
                 continue
 
             queue.append([nextI, nextJ])
