@@ -1,4 +1,4 @@
-//https://www.algoexpert.io/questions/Nth%20Fibonacci
+// https://www.algoexpert.io/questions/nth-fibonacci
 
 function getNthFib(n) {
   let minusTwo = 0;

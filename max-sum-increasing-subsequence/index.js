@@ -3,10 +3,10 @@ function maxSumIncreasingSubsequence(array) {
   //as well as the actual subsequence
   const dp = Array(array.length);
   const subSequences = Array(array.length);
-  
+
   dp[0] = array[0];
   subSequences[0] = [array[0]];
-  
+
   let answerMax = array[0];
   let answerSubsequence = [array[0]];
 
@@ -14,7 +14,7 @@ function maxSumIncreasingSubsequence(array) {
     const currentNum = array[i];
     let max = currentNum;
     subSequences[i] = [currentNum];
-    
+
     for (let j = 0; j < i; j++) {
       if (array[j] < currentNum) {
         if (dp[j] + currentNum > max) {
