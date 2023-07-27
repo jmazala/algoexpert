@@ -94,6 +94,8 @@ def isAdjacent(coordinate: List[int], island: set) -> bool:
 
 
 # METHOD 2 - Record the size of each island, and overwrite the original array with the # of island it is
+# TIME: O(m*n) as we visit every node in iteration loops
+# SPACE: O(m*n) as we may be storing the entire matrix as a single island
 def largestIsland(matrix: List[List[int]]) -> int:
     islandSizes = []
 
