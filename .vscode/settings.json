@@ -45,6 +45,7 @@
     "min-max-stack-construction",
     "min-height-bst",
     "merge-linked-lists",
+    "maximum-sum-submatrix",
     "max-sum-increasing-subsequence",
     "max-subset-sum-no-adjacent",
     "max-path-sum-in-binary-tree",
@@ -76,6 +77,6 @@
     "boggle-board",
     "binary-search",
     "balanced-brackets",
-    "maximum-sum-submatrix"
+    "dice-throws"
   ]
 }
