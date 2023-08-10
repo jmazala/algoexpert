@@ -26,13 +26,12 @@ public class LevenshteinDistance {
          * dp[i-1][j-1] represents an edit
          * dp[i-1][j] or dp[i][j-1] represents adding a char to either string
          */
-        int x1 = dp[i - 1][j] + 1;
-        int x2 = dp[i][j - 1] + 1;
-        int x3 = dp[i - 1][j - 1] + ((c1 == c2) ? 0 : 1);
+        int up = dp[i - 1][j] + 1;
+        int left = dp[i][j - 1] + 1;
+        int diagonal = dp[i - 1][j - 1] + ((c1 == c2) ? 0 : 1);
 
         // same as sorted asc [x1, x2, x3][0]
-        int curDistance = Math.min(x1, x2);
-        curDistance = Math.min(curDistance, x3);
+        int curDistance = Math.min(diagonal, Math.min(up, left)); // oh java....
         dp[i][j] = curDistance;
       }
     }

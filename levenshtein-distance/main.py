@@ -1,38 +1,41 @@
 # min number of operations on the first string to obtain the second string
 # you can either insert, delete, substitute
 
-#STORING ONLY LAST 2 ROWS
-#O(nm) time, O(min(n, m)) space
+
+# STORING ONLY LAST 2 ROWS
+# O(nm) time, O(min(n, m)) space
 def levenshteinDistance(str1, str2):
-	#find the smallest of the 2 strings
-	small = str1 if len(str1) < len(str2) else str2
-	big = str1 if len(str1) >= len(str2) else str2
-	
-	#0th row should be [0, 1, 2, 3 ...]
-	#we want to store only the last 2 rows of data
-	#so we should minimize space by minimizing columns
-	evenEdits = [x for x in range(len(small) + 1)]
-	oddEdits = [None for x in range(len(small) + 1)]
-	
-	#big + 1 rows
-	for i in range(1, len(big) + 1):
-		if i % 2 == 1:
-			currentEdits = oddEdits
-			previousEdits = evenEdits
-		else:
-			currentEdits = evenEdits
-			previousEdits = oddEdits
-		currentEdits[0] = i
-		for j in range(1, len(small) + 1):
-			if big[i-1] == small[j-1]:
-				currentEdits[j] = previousEdits[j-1]
-			else:
-				currentEdits[j] = 1 + min(previousEdits[j-1], currentEdits[j-1], previousEdits[j])
-	
-	return evenEdits[-1] if len(big) % 2 == 0 else oddEdits[-1]
+    # find the smallest of the 2 strings
+    small = str1 if len(str1) < len(str2) else str2
+    big = str1 if len(str1) >= len(str2) else str2
+
+    # 0th row should be [0, 1, 2, 3 ...]
+    # we want to store only the last 2 rows of data
+    # so we should minimize space by minimizing columns
+    evenEdits = [x for x in range(len(small) + 1)]
+    oddEdits = [None for x in range(len(small) + 1)]
+
+    # big + 1 rows
+    for i in range(1, len(big) + 1):
+        if i % 2 == 1:
+            currentEdits = oddEdits
+            previousEdits = evenEdits
+        else:
+            currentEdits = evenEdits
+            previousEdits = oddEdits
+        currentEdits[0] = i
+        for j in range(1, len(small) + 1):
+            if big[i - 1] == small[j - 1]:
+                currentEdits[j] = previousEdits[j - 1]
+            else:
+                currentEdits[j] = 1 + min(
+                    previousEdits[j - 1], currentEdits[j - 1], previousEdits[j]
+                )
+
+    return evenEdits[-1] if len(big) % 2 == 0 else oddEdits[-1]
 
 
-#STORING ENTIRE MATRIX
+# STORING ENTIRE MATRIX
 # def levenshteinDistance(str1, str2):
 #   # each row i compares substring of str1[:i]
 #   # each col j compares substring of str2[:j]
@@ -54,5 +57,5 @@ def levenshteinDistance(str1, str2):
 
 #   return dp[-1][-1]
 
-print(levenshteinDistance("abc", "yabd")) # 2 . insert 'y', substitute 'c' for 'd'
-print(levenshteinDistance("biting", "mitten")) # 4 b to m, i to t, n to e, g to n
+print(levenshteinDistance("abc", "yabd"))  # 2 . insert 'y', substitute 'c' for 'd'
+print(levenshteinDistance("biting", "mitten"))  # 4 b to m, i to t, n to e, g to n
