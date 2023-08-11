@@ -18,6 +18,16 @@ class LinkedList:
         return s[:-4]
 
 
+# METHOD 1 - 3 linked lists (<, >, =) and combine at end
+# Iterate through the list and move nodes to separate linked lists
+# for < and > values.  Combine them at the end
+# This requires pointers to the heads and tails of all (3) lists
+# TIME: O(n)
+#   O(1) to create pointers
+#   O(n) to iterate through the original list
+#     O(1) to move pointers around
+#   O(1) to combine lists
+# SPACE: O(n)
 def rearrangeLinkedList(head, k) -> LinkedList:
     lessHead = LinkedList("l")
     lessTail = lessHead
@@ -44,8 +54,8 @@ def rearrangeLinkedList(head, k) -> LinkedList:
             cur = cur.next
 
     lessTail.next = equalHead.next
-    while lessTail.next is not None:
-        lessTail = lessTail.next
+    if lessTail.next is not None:  # We may not have added any equal values
+        lessTail = prev  # If we did, prev tracks the tail of equal values list
 
     lessTail.next = moreHead.next
     return lessHead.next
