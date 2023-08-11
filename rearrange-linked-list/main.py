@@ -19,60 +19,46 @@ class LinkedList:
 
 
 def rearrangeLinkedList(head, k) -> LinkedList:
-    n = getListLength(head)
-    dummy = LinkedList("x")
-    dummy.next = head
-    insertPos = 0
-
-    prev = dummy
+    lessHead = LinkedList("l")
+    lessTail = lessHead
+    moreHead = LinkedList("m")
+    moreTail = moreHead
+    equalHead = LinkedList("d")
+    equalHead.next = head
+    prev = equalHead
     cur = head
-    next = head.next
-    for _ in range(n):
+
+    while cur is not None:
         if cur.value < k:
+            prev.next = cur.next
             temp = cur
-            cur = next
-            next = cur.next
-            prev.next = cur
-            insertAt(temp, dummy, insertPos)
-            insertPos += 1
+            cur = cur.next
+            lessTail = moveToEnd(temp, lessTail)
         elif cur.value > k:
+            prev.next = cur.next
             temp = cur
-            cur = next
-            next = cur.next
-            prev.next = cur
-            moveToEnd(temp, dummy)
+            cur = cur.next
+            moreTail = moveToEnd(temp, moreTail)
         else:
             prev = cur
-            cur = prev.next
-            next = cur.next
+            cur = cur.next
 
-    return dummy.next
+    while head is not None:
+        lessTail.next = head
+        lessTail = lessTail.next
+        head = head.next
 
+    if moreHead is not None:
+        lessTail.next = moreHead.next
 
-def getListLength(head: LinkedList) -> int:
-    temp = head
-    i = 0
-    while temp is not None:
-        i += 1
-        temp = temp.next
-
-    return i
+    return lessHead.next
 
 
-def moveToEnd(node: LinkedList, cur: LinkedList) -> None:
-    while cur.next is not None:
-        cur = cur.next
-
-    cur.next = node
+def moveToEnd(node: LinkedList, tail: LinkedList) -> None:
+    tail.next = node
+    tail = node
     node.next = None
-
-
-def insertAt(node: LinkedList, prev: LinkedList, pos: int) -> None:
-    for i in range(pos):
-        prev = prev.next
-
-    node.next = prev.next
-    prev.next = node
+    return tail
 
 
 head = LinkedList(3)
