@@ -43,14 +43,11 @@ def rearrangeLinkedList(head, k) -> LinkedList:
             prev = cur
             cur = cur.next
 
-    while head is not None:
-        lessTail.next = head
+    lessTail.next = equalHead.next
+    while lessTail.next is not None:
         lessTail = lessTail.next
-        head = head.next
 
-    if moreHead is not None:
-        lessTail.next = moreHead.next
-
+    lessTail.next = moreHead.next
     return lessHead.next
 
 
