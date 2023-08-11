@@ -11,6 +11,24 @@ class Node:
         self.unreachableConnections = []
 
 
+# METHOD 1 - DFS (2x)
+# Convert the list of airports and routes to a graph
+# Using the provided starting point, DFS the graph and
+# mark all encountered nodes as reachable. Use these markings
+# to produce a list of unreachable nodes.
+# For reach unreachable node, store all unreachable nodes that can
+# be reached from that node using DFS.  This gives us the priority
+# of routes to add - where the most connected unreachable node should
+# have a route added to it first.
+# As we add routes, mark all previously unreachable airports as reachable
+# and continue until all airports are reachable. Use a counter to track routes added
+# TIME: O(V * (V + E) + V + E + Vlog(V))
+#   O(V + E) to create the graph
+#   O(V + E) to get unreachable nodes
+#   O(V*(V + E)) to mark unreachable connections (assuming every unreachable node is connected to every other node)
+#   O(V) to get min # of new connections
+#   O(V log(v)) to sort unreachable nodes by priority
+# SPACE:  O(V + E)
 def airportConnections(
     airports: List[str], routes: List[List[str]], startingAirport: str
 ):
