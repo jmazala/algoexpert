@@ -9,7 +9,7 @@ function longestPalindromicSubstring(string) {
   for (let i = 1; i < string.length; i++) {
     //palindrome can start with a single char in the middle or a pair of chars in the middle
     const palindromeFromOdd = palindromeFrom(string, i - 1, i + 1);
-    const palindromeFromEven = (string[i-1] === string[i]) ? palindromeFrom(string, i - 1, i) : '';
+    const palindromeFromEven = (string[i - 1] === string[i]) ? palindromeFrom(string, i - 1, i) : '';
     answer = palindromeFromOdd.length > answer.length ? palindromeFromOdd : answer;
     answer = palindromeFromEven.length > answer.length ? palindromeFromEven : answer;
   }

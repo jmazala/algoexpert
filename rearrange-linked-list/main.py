@@ -27,7 +27,7 @@ class LinkedList:
 #   O(n) to iterate through the original list
 #     O(1) to move pointers around
 #   O(1) to combine lists
-# SPACE: O(n)
+# SPACE: O(1) for 6 pointers
 def rearrangeLinkedList(head, k) -> LinkedList:
     lessHead = LinkedList("l")
     lessTail = lessHead
@@ -66,6 +66,50 @@ def moveToEnd(node: LinkedList, tail: LinkedList) -> None:
     tail = node
     node.next = None
     return tail
+
+
+class LinkedListWithTail(LinkedList):
+    def __init__(self, value):
+        super().__init__(value)
+        self.tail = self
+
+    def append(self, node):
+        self.tail.next = node
+        node.next = None
+        self.tail = self.tail.next
+
+
+# METHOD 2:  Same as METHOD 1 but with a LinkedListWithTail subclass
+def rearrangeLinkedList(head, k) -> LinkedList:
+    lessHead = LinkedListWithTail("l")
+    moreHead = LinkedListWithTail("m")
+    equalHead = LinkedListWithTail("e")
+    equalHead.next = head
+    prev = equalHead
+    cur = head
+
+    while cur is not None:
+        if cur.value < k:
+            prev.next = cur.next
+            temp = cur
+            cur = cur.next
+            lessHead.append(temp)
+        elif cur.value > k:
+            prev.next = cur.next
+            temp = cur
+            cur = cur.next
+            moreHead.append(temp)
+        else:
+            prev = cur
+            cur = cur.next
+
+    lessTail = lessHead.tail
+    lessTail.next = equalHead.next
+    if lessTail.next is not None:  # We may not have added any equal values
+        lessTail = prev  # If we did, prev tracks the tail of equal values list
+
+    lessTail.next = moreHead.next
+    return lessHead.next
 
 
 head = LinkedList(3)
